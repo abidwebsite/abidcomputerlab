@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beautiful Home Page with Dropdown</title>
+  <style>
+      body {
+          margin: 0;
+          font-family: 'Arial', sans-serif;
+          background-color: #f4f4f4;
+          color: #333;
+      }
+      
+    input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 25px;
+        outline: none;
+        font-size: 16px;
+        margin-right: 10px;
+        background: rgba(255, 255, 255, 0.3);
+        color: #fff;
+    }
+    input[type="text"]::placeholder {
+        color: #fff;
+        opacity: 0.7;
+    }
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        background: #4a90e2;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    button:hover {
+        background: #9013fe;
+    }
+  h1 {
+  font-size: 3rem;
+  text-align: center;
+  color: red;
+  position: relative;
+  overflow: hidden;
+  display: inline-block; /* Ensures animation starts and ends at center */
+  white-space: nowrap; /* Prevents line break */
+  animation: moveRight 2s ease-in-out infinite alternate, glow 1s infinite alternate;
+}
+  @keyframes moveRight {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(100%); }
+  }
+  @keyframes glow {
+      from { text-shadow: 0 0 10px #f0c419; }
+      to { text-shadow: 0 0 20px #f0c419, 0 0 30px #f0c419, 0 0 40px #f0c419; }
+  }
+  
+  .navbar {
+          display: flex;
+          justify-content: space-between; /* Changed to space-between for alignment */
+          align-items: center;
+          background-color: #007BFF;
+          padding: 10px; /* Reduced padding for closer appearance */
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+          position: relative;
+          font-size: 15px;
+      }
+
+      .navbar a {
+          color: white;
+          text-decoration: none;
+          padding: 8px 10px; /* Reduced padding for closer appearance */
+          border-radius: 5px;
+          transition: background-color 0.3s;
+          position: relative;
+          font-size: 15px;
+      }
+
+      .navbar a:hover {
+          background-color: red;
+          font-size: 16px;
+      }
+
+      .dropdown {
+          position: relative;
+          display: inline-block;
+      }
+
+      .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: black;
+          min-width: 160px;
+          color: aquamarine;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.934);
+          z-index: 1;
+      }
+
+      .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          color: aqua;
+          transition: background-color 0.3s;
+      }
+
+      .dropdown-content a:hover {
+          background-color: green;
+      }
+
+      .dropdown:hover .dropdown-content {
+          display: block;
+      }
+
+      .hero {
+          background: url('https://example.com/hero-image.jpg') no-repeat center center/cover;
+          height: 200px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          color: white;
+          font-size: 2rem;
+          position: relative;
+      }
+
+      .hero::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(107, 207, 246, 0.617);
+      }
+
+      .hero h2 {
+          position: relative;
+          z-index: 1;
+      }
+
+      .container {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 20px;
+      }
+
+      .sidebar {
+          flex: 1;
+          min-width: 250px;
+          background-color: #343a40;
+          color: white;
+          padding: 20px;
+          border-radius: 8px;
+          margin-right: 20px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .sidebar a {
+          display: block;
+          color: white;
+          padding: 10px;
+          text-decoration: none;
+          border-radius: 5px;
+          transition: background-color 0.3s;
+          margin-bottom: 10px;
+      }
+
+      .sidebar a:hover {
+          background-color: #495057;
+      }
+
+      .content-container {
+          flex: 3;
+          background-color: white;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .footer {
+          background-color: #007BFF;
+          color: white;
+          text-align: center;
+          padding: 15px 0;
+          position: relative;
+          bottom: 0;
+          width: 100%;
+          margin-top: 20px;
+      }
+
+      @media (max-width: 600px) {
+          .container {
+              flex-direction: column;
+          }
+
+          .sidebar {
+              margin-right: 0;
+              margin-bottom: 20px;
+          }
+      }
+  </style>
+</head>
+<body>
+  <header>
+      <h1>Welcome to Our Abid Computer Lab</h1>
+      <div class="navbar">
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <div class="dropdown">
+              <a href="#">Courses</a>
+              <div class="dropdown-content">
+                  <a href="#" onclick="showContent(event, 'Computer Information')">Computer Information</a>
+                  <a href="#" onclick="showContent(event, 'Website Building')">Website Building</a>
+                  <a href="#" onclick="showContent(event, 'Graphic Designing')">Graphic Designing</a>
+                  <a href="#" onclick="showContent(event, 'Ethical Hacking')">Ethical Hacking</a>
+                  <a href="#" onclick="showContent(event, 'Data Science')">Data Science</a>
+                  <a href="#" onclick="showContent(event, 'Digital Marketing')">Digital Marketing</a>
+                  <a href="#" onclick="showContent(event, 'Mobile App Development')">Mobile App Development</a>
+              </div>
+          </div>
+          <a href="Sign Up.html">Sign Up</a>
+          <a href="Loginpage.html">Login</a>
+          <form action="https://www.google.com/search" method="get" style="display: flex; align-items: center; margin-left: auto;">
+              <input type="text" name="q" placeholder="Abid Search Engine" required>
+              <button type="submit">Search</button>
+          </form>
+      </div>
+  </header>
+
+  <section class="hero">
+      <h2>Enhance Your Skills Today!</h2>
+  </section>
+
+  <div class="container">
+      <div class="sidebar">
+          <h2>Menu</h2>
+          <a href="#" onclick="showContent(event, 'Computer Information')">Computer Information</a>
+          <a href="#" onclick="showContent(event, 'Website Building')">Website Building</a>
+          <a href="#" onclick="showContent(event, 'Graphic Designing')">Graphic Designing</a>
+          <a href="#" onclick="showContent(event, 'Ethical Hacking')">Ethical Hacking</a>
+          <a href="#" onclick="showContent(event, 'Data Science')">Data Science</a>
+          <a href="#" onclick="showContent(event, 'Digital Marketing')">Digital Marketing</a>
+          <a href="#" onclick="showContent(event, 'Mobile App Development')">Mobile App Development</a>
+      </div>
+      <div class="content-container">
+          <h2>Information</h2>
+          <p id="contentDisplay">Select an item from the sidebar to see the content here.</p>
+      </div>
+  </div>
+
+  <script>
+      function showContent(event, item) {
+          event.preventDefault(); // Prevent default anchor behavior
+          const contentDisplay = document.getElementById('contentDisplay');
+          let content = '';
+
+          switch(item) {
+              case 'Computer Information':
+                  content = '<h3 style="color:red;">What is Computer? </h3><p>A computer is an electronic device that processes data. It can store, retrieve, and manipulate information to perform tasks.</p><h3>Key Components of a Computer</h3><p>There are main two parts/Components of Computer </p><h4>Software : </h4><p>A set of rules and Instructions which tells to Computer that what to do and how to do is known as <b style="color:green;">Software</b>. </p><h4>Hardware : </h4><p> Hardware are the physical and Electronics Compnents of Computer which perform the rules of Software.</p><br><a href="Computer info1.html"> Next OR More > </a>';
+                  break;
+              case 'Website Building':
+                  content = '<h3 style="color: red;">Website Building</h3><p>Understand the fundamentals of creating websites.</p><h4 style="color: green">What is Website Building</h4><p>The collection of Web Pages which are designed by using <b style="color: red;"> HTML, CSS, and JAVASCRIPT </b> is called Website building. Simply it is called Web Designing.It can also be defined as "To build a webpages is called Website building" </p><h4>Compnents of Website Building OR Web Designing: </h4><h4>HTML(Hyper Text Markup Language)</h4><p>A Type of Language which are used for its FrontEnd Page. Tags is the main key of HTML</p><h4>CSS(Cascading Style Sheet)</h4><p>It provide buety to the body of Web page. There are also main 3 types of CSS.<b style="color: red;"> Inline CSS, </b><b style="color: green;"> Internal CSS, </b><b style="color: blue;">and External CSS. </b> </p><a href="Website Building.html"> Next OR More > </a>';
+                  break;
+              case 'Graphic Designing':
+                  content = '<h3>Graphic Designing</h3><p>The skill of Designing Graphs, image/Photo Editing, Video Editing, and So more is called Graphic Designing.</p>';
+                  break;
+              case 'Ethical Hacking':
+                  content = '<h3>Ethical Hacking</h3><p>Learn the skills to protect systems from cyber threats.</p>';
+                  break;
+              case 'Data Science':
+                  content = '<h3>Data Science</h3><p>Dive into data analysis, machine learning, and statistics.</p>';
+                  break;
+              case 'Digital Marketing':
+                  content = '<h3>Digital Marketing</h3><p>Discover strategies for effective online marketing.</p>';
+                  break;
+              case 'Mobile App Development':
+                  content = '<h3>Mobile App Development</h3><p>Learn to create applications for mobile devices.</p>';
+                  break;
+              default:
+                  content = '<p>Select an item from the menu to see the information.</p>';
+          }
+
+          contentDisplay.innerHTML = content;
+      }
+  </script>
+
+  <footer class="footer">
+      <p>&copy; Abid Mehmood 2024 Learning Platform. All rights reserved.</p>
+      <h4><i>Contact Info</i></h4>
+      Email: <a href="mailto:m9727673@gmail.com" style="color: red;">m9727673@gmail.com</a><br>
+      Phone Number:<br> <p>+92 311 8266834 </p>
+      Phone Number: <p>+92 302 9382306 </p>
+  </footer>
+</body>
+</html>

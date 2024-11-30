@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1c1c1c, #3a3a3a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 30px rgba(0, 255, 127, 0.5);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(0, 255, 127, 0.9);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            background: rgba(255, 255, 255, 0.4);
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 255, 127, 0.7);
+        }
+
+        button {
+            background: linear-gradient(90deg, #00ff7f, #007fff);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 15px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s, box-shadow 0.3s;
+            text-shadow: 0 0 5px rgba(0, 255, 127, 0.7);
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #007fff, #00ff7f);
+            box-shadow: 0 0 20px rgba(0, 255, 127, 1);
+        }
+
+        #googleButton {
+            background-color: #db4437; /* Google red */
+            margin-top: 15px;
+        }
+
+        #googleButton:hover {
+            background-color: #c13520; /* Darker red on hover */
+        }
+
+        #message {
+            margin-top: 20px;
+            color: #00ff7f;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form id="signupForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Create Account</button>
+        </form>
+        <button id="googleButton" onclick="googleSignIn()">Continue with Google</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function googleSignIn() {
+            const auth2 = gapi.auth2.getAuthInstance();
+            auth2.signIn().then(function (user) {
+                const profile = user.getBasicProfile();
+                const idToken = user.getAuthResponse().id_token;
+
+                // You can use the idToken to authenticate with your backend server
+                console.log("ID Token: " + idToken);
+                console.log("Name: " + profile.getName());
+                console.log("Email: " + profile.getEmail());
+
+                // Redirect or display success message
+                document.getElementById('message').textContent = 'Signed in as ' + profile.getName();
+            }).catch(function (error) {
+                console.error("Sign-in error: ", error);
+                document.getElementById('message').textContent = 'Error signing in with Google.';
+            });
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get input values
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Simple validation (you can expand this)
+            if (username && email && password) {
+                // Display success message
+                document.getElementById('message').textContent = 'Account created successfully!';
+            } else {
+                // Display error message
+                document.getElementById('message').textContent = 'Please fill in all fields.';
+            }
+        });
+    </script>
+</body>
+</html>
