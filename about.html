@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="icon.PNG" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Abid Computer Lab</title>
+<style>
+
+    /* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Header */
+.header {
+  background-color: #0078d7;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.header p {
+  font-size: 1.2rem;
+}
+
+/* About Section */
+.about-section, .values-section, .team-section {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2, .values-section h2, .team-section h2 {
+  color: #0078d7;
+  margin-bottom: 15px;
+}
+
+/* Team Section */
+.team-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.team-member {
+  text-align: center;
+  max-width: 200px;
+}
+
+.team-member img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.team-member h3 {
+  margin: 10px 0 5px;
+  color: #0078d7;
+}
+
+.team-member p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 15px 10px;
+  background: #333;
+  color: #fff;
+}
+
+/* Button */
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  background-color: #0078d7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+.gallery {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+      }
+      .gallery-item {
+          position: relative;
+          text-align: center;
+          border: 2px solid #444;
+          border-radius: 10px;
+          overflow: hidden;
+          transition: transform 0.3s;
+      }
+      .gallery-item:hover {
+          transform: scale(1.05);
+      }
+      .gallery-item img {
+          width: 200px;
+          height: 150px;
+          object-fit: cover;
+      }
+      .neon-text {
+          font-size: 24px;
+          color: #fff;
+          text-align: center;
+          margin-top: 20px;
+          text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff;
+          animation: neon 1.5s infinite alternate;
+      }
+      @keyframes neon {
+          from {
+              text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff;
+          }
+          to {
+              text-shadow: 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff;
+          }
+      }
+</style>
+
+</head>
+<body>
+
+  <header class="header">
+    <h1>Welcome to Abid Computer Lab</h1>
+    <p>Your ultimate destination for learning and growing in technology!</p>
+  </header>
+
+  <main>
+    <section class="about-section">
+      <h2>About Us</h2>
+      <p>
+        Abid Computer Lab is dedicated to providing high-quality education and resources 
+        to empower learners in the field of computer science and technology. 
+        Whether you’re a beginner or looking to enhance your skills, we are here to help you achieve your goals.
+      </p>
+    </section>
+
+    <section class="values-section">
+      <h2>Our Core Values</h2>
+      <ul id="values-list">
+        <li>Excellence in Education</li>
+        <li>Innovation and Creativity</li>
+        <li>Community and Collaboration</li>
+        <li>Empowerment through Technology</li>
+      </ul>
+      
+    </section>
+
+    <section class="team-section">
+      <h2>Meet Our Team</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+            <img src="4.png" alt="Image 1">
+            <p>Abid Mehmood Developer</p>
+        </div>
+        <div class="gallery-item">
+            <img src="2 (2).png" alt="Image 2">
+            <p>Salman Khan Instructor</p>
+        </div>
+        <div class="gallery-item">
+            <img src="1.PNG" alt="Image 3">
+            <p>Fahd Khan Senior Developer</p>
+        </div>
+    </div>
+    <div class="neon-text">Abid Computer Lab</div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 Abid Computer Lab. All rights reserved.</p>
+  </footer>
+
+<script>
+    // Add a new core value dynamically
+document.getElementById('add-value-btn').addEventListener('click', function () {
+  const newValue = prompt('Enter a new core value:');
+  if (newValue) {
+    const valuesList = document.getElementById('values-list');
+    const newListItem = document.createElement('li');
+    newListItem.textContent = newValue;
+    valuesList.appendChild(newListItem);
+  } else {
+    alert('Please enter a valid value.');
+  }
+});
+
+</script>
+</body>
+</html>
